@@ -1,0 +1,33 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ytf-8">
+  <title>Recci/食育</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+    <body>
+        <table>
+            <tr>
+                <td><img src="../../../media/{{ obj }}" width="450" height="450"/></td>
+            </tr>
+            <tr>
+            <form action="{%url 'main:create_index2' %}" method="POST">
+                    <label for ="text">foodname:</label>
+                {% for search_words in item %}
+                    {% csrf_token %}
+                    <input id = "{{search_words}}" type="radio" name="text" value={{search_words}}>{{search_words}}
+        
+                {% endfor %}
+                    <input type="submit"  value="送信">
+            </form>
+            </tr>
+            <p>※使いたい食材を入力してください</p>
+
+
+            <h2><a href="{%url 'main:ocr' %}">写真に戻る</a></h2> 
+        </table>
+    </body>
+</html>

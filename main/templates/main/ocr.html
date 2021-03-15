@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ytf-8">
+  <title>Recci/レシート読み取り</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+    <body>
+        <header>
+            <center>
+            <h1 id="title">Recci</h1>
+            <div class="right">
+            <ul>  
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'main:foodindex' %}" class="btn btn--yellow btn--cubic">食材登録</a></li>
+                {% endif %}
+               <li><a href="{% url 'main:recipe'  %}">レシピ検索</a></li>
+               <li><a href="{% url 'main:foodwisdom' %}">食育</a></li>
+            </ul>
+            </div>
+            </center>
+        </header>
+        <div class="contents">
+            <h1>レシート読み取り</h1>
+            <h2>{{Title}}</h2>
+        <form method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">読み込む</button>
+        </form>
+
+    <br>
+    <td><a href="{% url 'main:foodindex' %}">戻る</a></td>
+</div>    
+</body>
+</html>

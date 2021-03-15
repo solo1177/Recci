@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ytf-8">
+  <title>Recci/レシピランキング</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+    <body>
+
+        <tr>
+            <td>  
+                {% for item in all %}
+                <center>
+                <a href="{%url 'main:detail_recipe'  item.id %}" class="recipecontent">
+                    <div>
+                    <h2> {{ item.title }}</h2> <br>
+                    <img src="{{item.image_url}}" alt="{{ item.title}} " class="rankimg">
+                </div>
+            </a>
+            <br><br><hr><br>
+            </center>
+                {% endfor %}
+               <br>
+               <br>{% csrf_token %}
+             
+
+            </td>
+        </tr>
+        <h2><a href="{%url 'main:recipe'%}">レシピ検索に戻る</a></h2> 
+
+    </body>
+</html>
+
+

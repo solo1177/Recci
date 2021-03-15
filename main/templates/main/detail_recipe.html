@@ -1,0 +1,36 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ytf-8">
+  <title>Recci/レシピ詳細</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+    <body>
+
+        <tr>
+            <td> 
+                <center>
+               <h1> {{ obj.title }} </h1> <br>
+               
+               <img src="{{obj.image_url}}" alt="{{ obj.title }} ">
+               <br>
+               <p>URL：<a href=" {{ obj.url }}">{{ obj.url }} </a></p>
+               <br>{% csrf_token %}
+                <h1>材料</h1>
+                    <h3>{{ obj.image }}</h3><br>
+                <h1>調理時間</h1>
+                    {{ obj.time }}<br>
+                <h1>製作費</h1>
+                    {{ obj.cost }}<br>
+                <h2>発案者のコメント</h2>
+               <p> {{ obj.description }}</p>
+               </center>
+            </td>
+        </tr>
+        <h2><a href="{%url 'main:recipe'%}">レシピ検索に戻る</a></h2> 
+
+    </body>
+</html>

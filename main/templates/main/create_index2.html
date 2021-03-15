@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Recci/食品登録OCR</title>
+  <meta charset="ytf-8">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+ <body class="container">
+     <h1>食品登録 OCR</h1>
+     {% csrf_token %}
+     <form action="{% url 'main:create_index' %}" method="POST">
+         {% csrf_token %}
+         <table class="table">
+             {{ form }}
+             
+             <tr><th><td>
+                <input type = "submit" value="click" class="button">
+            </td></th></tr>
+         </table>
+       
+     </form>
+     <br>
+     <br>
+     <td><a href="{%url 'main:detailbook' %}">戻る</a></td>
+
+ </body>
+</html>

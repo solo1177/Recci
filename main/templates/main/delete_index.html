@@ -1,0 +1,29 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="ytf-8">
+  <title>Recci/履歴削除</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script type="text/javascript" src="{% static 'style.js' %}"></script>
+</head>
+ <body class="container">
+
+    <p>以下のレコードを削除します  </p>
+         <table class="table">
+             <tr><th>ID</th><td>{{ obj.id }}</td></tr>
+             <tr><th>Name</th><td>{{ obj.name }}</td></tr>
+             <tr><th>Count</th><td>{{ obj.count }}</td></tr>
+             <tr><th>Date</th><td>{{ obj.date }}</td></tr>
+             <tr><th>Memo</th><td>{{ obj.memo }}</td></tr>
+             <form action="{% url 'main:delete_index' id %}" method="post">
+                 {% csrf_token %}
+                 <tr><th><td>
+                     <input type = "submit" value="click" class="button">
+                </td></th></tr>
+             </form>
+         </table>
+
+ </body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Recci/レシピ検索</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}"/>
+        <script type="text/javascript" src="{% static 'script.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+<body>
+    <header>
+        <center>
+        <h1 id="title">Recci</h1>
+        <div class="right">
+        <ul>  
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'main:foodindex' %}" class="btn btn--yellow btn--cubic">食材登録</a></li>
+            {% endif %}
+           <li><a href="{% url 'main:recipe'  %}">レシピ検索</a></li>
+           <li><a href="{% url 'main:foodwisdom' %}">食育</a></li>
+        </ul>
+        </div>
+        </center>
+      </header>
+
+<div class="contents">
+
+    <h1>レシピ検索</h1>
+   
+    <p>使いたい食材を入力してください</p>
+    <form action="{% url 'main:recipe' %}" method="POST">
+        {% csrf_token %}
+        <label for ="text">食材名:</label>
+        <input id = "text" type="text" name="text">
+        <input type="submit"  value="検索" class="button">
+    </form>
+    <h2><a href="{%url 'main:Top'%}">ホームに戻る</a></h2> 
+    </div>
+</body>
+</html>
+
